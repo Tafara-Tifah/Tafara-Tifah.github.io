@@ -168,6 +168,23 @@ async function renderSection(path, elId) {
   document.getElementById(elId).innerHTML = mdToHtml(body);
 }
 
+/* ---------- Background scene: scroll progress drives dusk, parallax and glass ---------- */
+(function sceneScroll() {
+  const root = document.documentElement;
+  let queued = false;
+  const update = () => {
+    queued = false;
+    const max = root.scrollHeight - window.innerHeight;
+    const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    root.style.setProperty("--p", p.toFixed(4));
+  };
+  const request = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+  window.addEventListener("scroll", request, { passive: true });
+  window.addEventListener("resize", request);
+  if ("ResizeObserver" in window) new ResizeObserver(request).observe(document.body);
+  update();
+})();
+
 /* ---------- Boot ---------- */
 (async function init() {
   document.getElementById("year").textContent = new Date().getFullYear();
