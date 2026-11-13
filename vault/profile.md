@@ -9,6 +9,7 @@ linkedin: https://www.linkedin.com/in/tafara-chikuku-38697b223
 facebook: https://www.facebook.com/tafara.tifa.2025
 whatsapp: https://wa.me/263782261659
 photo: vault/assets/images/profile.jpg
+background: vault/assets/images/background-mountain.webp
 ---
 
 I am an Electrical Engineer holding a BSc Honours degree in Electrical Engineering and a Master's degree in Manufacturing Systems Engineering (with Distinction), with a specialization in power systems and industrial automation.
