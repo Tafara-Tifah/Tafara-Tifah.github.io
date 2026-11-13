@@ -97,6 +97,14 @@ async function renderProfile(path) {
     img.src = meta.photo;
     img.onload = () => { img.hidden = false; document.getElementById("profile-fallback").style.display = "none"; };
   }
+  if (meta.background) {
+    const bg = new Image();
+    bg.onload = () => {
+      document.querySelector(".scene-photo").style.backgroundImage = `url("${meta.background}")`;
+      document.documentElement.classList.add("has-photo");
+    };
+    bg.src = meta.background;
+  }
   if (meta.name) {
     document.getElementById("profile-fallback").textContent =
       meta.name.split(/\s+/).map(w => w[0]).join("").slice(0, 2).toUpperCase();

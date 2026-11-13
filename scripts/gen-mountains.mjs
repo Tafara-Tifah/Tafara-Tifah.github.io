@@ -110,6 +110,7 @@ const sun =
 const scene =
   `  <div class="scene" aria-hidden="true">\n    <div class="scene-sky"></div>\n` +
   sun + html +
+  `    <div class="scene-photo"></div>\n    <div class="scene-tint"></div>\n    <div class="scene-wash"></div>\n` +
   `    <div class="scene-dusk"></div>\n  </div>\n`;
 
 const page = readFileSync(indexPath, "utf8");

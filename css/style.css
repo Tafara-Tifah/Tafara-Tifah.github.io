@@ -48,6 +48,35 @@ img { max-width: 100%; }
 .layer-mid   { transform: translateY(calc(var(--p) * 7%)); }
 .layer-near  { transform: translateY(calc(var(--p) * 11%)); }
 .layer-front { transform: translateY(calc(var(--p) * 15%)); }
+/* Optional background photo (profile.md `background:`), recoloured into the brand blues.
+   Fades in over the drawn mountains once loaded; js/main.js adds .has-photo. */
+.scene-photo,
+.scene-tint,
+.scene-wash {
+  position: absolute; inset: 0;
+  opacity: 0; transition: opacity 1.2s ease;
+}
+.scene-photo {
+  top: -3%;
+  background-position: center 30%; background-size: cover; background-repeat: no-repeat;
+  filter: grayscale(1) contrast(1.06);
+  transform: translateY(calc(var(--p) * 2.5%));
+  will-change: transform;
+}
+.scene-tint {
+  background: linear-gradient(180deg, #9cc6f2 0%, #5a93d6 50%, #2a68b8 100%);
+  mix-blend-mode: color;
+}
+.scene-wash {
+  background: linear-gradient(180deg,
+    rgba(240, 247, 255, 0.55) 0%,
+    rgba(225, 238, 252, 0.3) 45%,
+    rgba(210, 228, 250, 0.12) 100%);
+}
+.has-photo .scene-photo,
+.has-photo .scene-wash { opacity: 1; }
+.has-photo .scene-tint { opacity: 0.9; }
+
 /* Dusk, in two washes so the middle of the page stays a rich blue rather than grey:
    a vivid sky-blue comes in first, then deep navy over the lower half of the page. */
 .scene-dusk,
@@ -277,5 +306,5 @@ img { max-width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .scene-layer { transform: none !important; }
+  .scene-layer, .scene-photo { transform: none !important; }
 }
