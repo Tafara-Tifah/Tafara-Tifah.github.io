@@ -275,6 +275,7 @@ img { max-width: 100%; }
   box-shadow: 0 2px 12px rgba(4, 18, 45, 0.18);
 }
 .achievements li:last-child { margin-bottom: 0; }
+.achievements ul + p { margin-top: 1.1rem; font-size: 0.92rem; font-style: italic; }
 
 /* Contact */
 .contact { text-align: center; }
