@@ -150,7 +150,7 @@ async function renderProjects(paths) {
       : "";
     return `
       <article class="card">
-        <div class="card-img">${img}<div class="img-fallback">⚡</div></div>
+        <div class="card-img">${img}<div class="img-fallback"></div></div>
         <div class="card-body">
           <h3>${esc(meta.title || "Untitled project")}</h3>
           <div class="card-period">${esc(meta.period || "")}</div>

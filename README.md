@@ -1,24 +1,32 @@
 # Tafara Chikuku — Portfolio
 
 Personal portfolio website of **Tafara Chikuku**, Electrical Engineer (Harare, Zimbabwe).
+**Live at https://tafara-tifah.github.io/**
 
 **How it works:** all content lives in the [`vault/`](vault/) folder — an **Obsidian vault** of Markdown notes that doubles as the site's database. The website (`index.html` + `js/main.js`) reads those notes and renders them. Only the owner of this GitHub account can change content; visitors get a read-only published site.
 
+**Design:** see-through royal-blue glass panels with bright white, gold and sky-blue text, floating over a mountain landscape that deepens from light blue at the top of the page to navy at the bottom as you scroll.
+
 ```
-tafara-portfolio/
 ├── index.html            ← the website
-├── css/style.css         ← styling
-├── js/main.js            ← reads the vault and renders the page
+├── css/style.css         ← styling (colours are the variables at the top)
+├── js/main.js            ← reads the vault and renders the page; drives the scroll effects
+├── img/
+│   ├── brand-stylehive.png  ← Style Hive badge used in the menu bar and browser tab
+│   └── scene/            ← the Mount Cook ink sketch (shows while the background photo loads)
 ├── vault/                ← ★ THE CONTENT DATABASE (open this folder in Obsidian)
-│   ├── profile.md        ← name, title, about me, social links, photo
+│   ├── profile.md        ← name, title, about me, social links, photo, background
 │   ├── skills.md         ← skills section
 │   ├── achievements.md   ← achievements section
 │   ├── education.md      ← education & certifications
+│   ├── references.md     ← referees with LinkedIn links
 │   ├── career/           ← one note per job (timeline)
 │   ├── projects/         ← one note per project (cards)
-│   ├── assets/images/    ← your photos and project pictures
+│   ├── assets/images/    ← your photos, logos and the background landscape
 │   └── manifest.json     ← auto-generated list of notes (don't edit by hand)
-├── scripts/build-manifest.mjs   ← regenerates manifest.json
+├── scripts/
+│   ├── build-manifest.mjs   ← regenerates manifest.json
+│   └── gen-mountains.mjs    ← redraws the Mount Cook sketch in img/scene/
 └── .github/workflows/deploy.yml ← auto-deploys to GitHub Pages on every push
 ```
 
@@ -49,10 +57,13 @@ One-paragraph summary of the project.
 Drop the picture into `vault/assets/images/`, push, done — the deploy workflow rebuilds `manifest.json` automatically so the new note appears.
 
 ### Add a new job to the career timeline
-Same idea: add a note to `vault/career/` with `company`, `role`, `period`, `location`, and `order` in the frontmatter.
+Same idea: add a note to `vault/career/` with `company`, `role`, `period`, `location`, and `order` in the frontmatter. Add `logo:` with an image path to show the company logo (several logos separated by commas).
 
-### Update social links / photo
-Edit the frontmatter at the top of `vault/profile.md` (`linkedin:`, `facebook:`, `whatsapp:`, `photo:`).
+### Update social links, photo or background
+Edit the frontmatter at the top of `vault/profile.md`:
+- `linkedin:`, `facebook:`, `whatsapp:` — social buttons (a button hides itself if its line is removed)
+- `photo:` — your portrait
+- `background:` — the landscape behind the page. Any photo works: it is recoloured into the site's blues automatically. Remove the line to show the Mount Cook sketch instead.
 
 ## 🖥️ Preview locally
 
@@ -63,9 +74,8 @@ npx serve .
 # then open http://localhost:3000
 ```
 
-## 🚀 Publishing (one-time setup)
+## 🚀 Publishing
 
-1. Create a repository on GitHub (e.g. `tafara-portfolio`).
-2. Push this folder to it (branch `main`).
-3. On GitHub: **Settings → Pages → Source: GitHub Actions**.
-4. Your site goes live at `https://<username>.github.io/tafara-portfolio/`.
+The repository is named `<username>.github.io`, which makes GitHub Pages serve it at the root address `https://<username>.github.io/` (Settings → Pages → Source: GitHub Actions). Every push to `main` republishes the site in about a minute.
+
+To change the address to `https://tafarachikuku.github.io/`: rename the GitHub account to `tafarachikuku` (Settings → Account → Change username), then rename this repository to `tafarachikuku.github.io`.
